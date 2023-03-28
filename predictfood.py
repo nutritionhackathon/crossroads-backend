@@ -22,17 +22,15 @@ classes = ['apple_pie', 'baby_back_ribs', 'baklava', 'beef_carpaccio',
            'shrimp_and_grits', 'spaghetti_bolognese', 'spaghetti_carbonara', 'spring_rolls', 'steak', 'strawberry_shortcake', 'sushi',
            'tacos', 'takoyaki', 'tiramisu', 'tuna_tartare', 'waffles']
 
-filename = './images/lobster_roll_sandwich/2539.jpg'
-img_ = image.load_img(filename, target_size=(228, 228))
-img_array = image.img_to_array(img_)
-img_processed = np.expand_dims(img_array, axis=0)
-img_processed /= 255.
 
-prediction = model.predict(img_processed)
 
-index = np.argmax(prediction)
+def predictfood(imageFile):
+    img_array = image.img_to_array(imageFile)
+    img_processed = np.expand_dims(img_array, axis=0)
+    img_processed /= 255.
 
-plt.title("Prediction - {}".format(str(classes[index]).title()), size=18, color='red')
-plt.imshow(img_array)
-plt.show()
-print(classes[index])
+    prediction = model.predict(img_processed)
+
+    index = np.argmax(prediction)
+
+    return classes[index]
