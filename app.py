@@ -5,6 +5,7 @@ import shutil
 import sys
 import predictfood
 import predictclasses
+import base64
 
 app = Flask(__name__)
 
@@ -21,26 +22,21 @@ def image_receiver():
         shutil.rmtree(TEMP_DIR)
     os.makedirs(TEMP_DIR, exist_ok=True)
 
-    files = {}
-
     print("Saving local files:")
-    print(request.files)
-    for [field_name, f] in request.files.items():
-        print('Saving to ', os.path.join('temp-download', f.filename))
-        filename = f.filename
-        f.save(os.path.join('temp-download', f.filename.replace('-', '_')))
-
-        files[field_name.replace('-', '_')] = os.path.join('temp-download', f.filename.replace('-', '_'))
-        print('Saved ', field_name, files[field_name.replace('-', '_')])
+    based = bytes(request.json['baseString'][23:], 'utf-8')
+    #print(based)
+    with open("temp-download/temp.jpg", "wb") as fh:
+        fh.write(base64.decodebytes(based))
+        #files[field_name.replace('-', '_')] = os.path.join('temp-download', f.filename.replace('-', '_'))
+        #print('Saved ', field_name, files[field_name.replace('-', '_')])
 
         # json_data[]
-
-    print(files)
+    #print(files)
     print('Saved all files locally to the temp-download directory')
     #call model function
     #return output
-    filepath = './temp-download/' + filename
-    food = predictfood.predictfood(filepath)
+    filepath = './temp-download/temp.jpg'
+    food = predictfood.predictfood("./temp-download/temp.jpg")
     classes = predictclasses.predictclasses(filepath)
 
     return [food, classes]
