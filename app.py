@@ -27,7 +27,7 @@ def image_receiver():
     print(request.files)
     for [field_name, f] in request.files.items():
         print('Saving to ', os.path.join('temp-download', f.filename))
-        filename = f.filname
+        filename = f.filename
         f.save(os.path.join('temp-download', f.filename.replace('-', '_')))
 
         files[field_name.replace('-', '_')] = os.path.join('temp-download', f.filename.replace('-', '_'))
