@@ -3,7 +3,6 @@ import json
 import os
 import shutil
 import sys
-import dotenv
 import predictfood
 import predictclasses
 
@@ -45,3 +44,6 @@ def image_receiver():
     classes = predictclasses.predictclasses(filepath)
 
     return [food, classes]
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
