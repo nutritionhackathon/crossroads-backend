@@ -11,7 +11,7 @@ datagen = tf.keras.preprocessing.image.ImageDataGenerator(
 classToName = {0:'Bread', 1:'Dairy product', 2: 'Dessert', 3: 'Egg', 4: 'Fried food', 5:'Meat', 6: 'Noodles-Pasta', 7: 'Rice', 8:'Seafood', 9:'Soup', 10: 'Vegetable-Fruit'}
 
 def predictclasses(imageFile):
-    image = tf.keras.preprocessing.image.load_img('milk.jpeg', target_size=(300, 300))
+    image = tf.keras.preprocessing.image.load_img(imageFile, target_size=(300, 300))
     image = tf.keras.preprocessing.image.img_to_array(image)
 
     image = image.reshape(1, 300, 300, 3)
