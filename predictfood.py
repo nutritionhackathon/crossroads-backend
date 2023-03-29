@@ -33,4 +33,13 @@ def predictfood(imageFile):
 
     index = np.argmax(prediction)
 
-    return classes[index]
+    f = classes[index]
+    if f == 'apple_pie' or f == 'baklava' or f == 'beignets' or f == 'bread_pudding' or f == 'cannoli' or f == 'carrot_cake' or f == 'cheescake' or f == 'chocolate_cake' or f == 'chocolate_mousse' or f == 'churros' or f == 'creme_brulee' or f == 'cup_cakes' or f == 'donuts' or f == 'ice_cream' or f == 'macarons' or f == 'panna_cotta' or f == 'red_velvet_cake' or f == 'strawberry_shortcake' or f == 'tiramisu':
+        return [f, 'salad', 'fruit', 'yogurt']
+    elif f == 'beet_salad' or f == 'caesar_salad' or f == 'caprese_salad' or f == 'greek_salad':
+        return [f, 'nuts', 'seeds', 'avocado']
+    elif f == 'baby_back_ribs' or f == 'beef_carpaccio' or f == 'beef_tartare' or f == 'pork_chop' or f == 'prime_rib' or f == 'steak':
+        return [f, 'vegetables', 'grains', 'fruit']
+    elif f == 'chicken_quesadilla' or f == 'chicken_wings' or f == 'club_sandwich' or f == 'croque_madame' or f == 'fish_and_chips' or f == 'french_fries' or f == 'fried_calamari' or f == 'grilled_chesse_sandwich' or f == 'macaroni_and_cheese' or f == 'nachos' or f == 'onion_rings' or f == 'pizza':
+        return [f, 'vegetables', 'fruit', 'grains']
+    return [f, 'salad', 'fruit', 'yogurt']
