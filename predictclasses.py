@@ -25,9 +25,11 @@ def predictclasses(imageFile):
     h3 = 0; i3 = 0
     for i in range(11):
         if arr[i] > h1:
-            h3 = h2; h2 = h1; h1 = arr[i]; i1 = i
+            h3 = h2; h2 = h1; h1 = arr[i]; i3 = i2; i2 = i1; i1 = i
         elif arr[i] > h2:
-            h3 = h2; h2 = arr[i]; i2 = i
+            h3 = h2; h2 = arr[i]; i3 = i2; i2 = i
         elif arr[i] > h3:
             h3 = arr[i]; i3 = i
+    #print(arr)
+    #print(i1, i2, i3)
     return [classToName[i1], classToName[i2], classToName[i3]]
