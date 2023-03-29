@@ -24,8 +24,9 @@ classes = ['apple_pie', 'baby_back_ribs', 'baklava', 'beef_carpaccio',
 
 
 
-def predictfood(imageFile):
-    img_array = image.img_to_array(imageFile)
+def predictfood(filename):
+    img_ = image.load_img(filename, target_size=(228, 228))
+    img_array = image.img_to_array(img_)
     img_processed = np.expand_dims(img_array, axis=0)
     img_processed /= 255.
 
