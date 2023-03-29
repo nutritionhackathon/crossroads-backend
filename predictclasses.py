@@ -32,4 +32,10 @@ def predictclasses(imageFile):
             h3 = arr[i]; i3 = i
     #print(arr)
     #print(i1, i2, i3)
-    return [classToName[i1], classToName[i2], classToName[i3]]
+    list = []
+    list.append(classToName[i1])
+    if h2 > 0.001:
+        list.append(classToName[i2])
+    if h3 > 0.001:
+        list.append(classToName[i3])
+    return list
